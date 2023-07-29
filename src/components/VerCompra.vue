@@ -10,7 +10,7 @@
                     <h2>{{ item.nombre }}</h2>
                     <h3>${{ item.precio }}</h3>
                     <div class="imageCarritoComprado">
-                        <img v-bind:src="'https://c3g10-backend.herokuapp.com/product/image/'+item.productImage">
+                        <img v-bind:src="'https://locomproback.onrender.com/product/image/'+item.productImage">
                     </div>
                 </a>
             </li>
@@ -64,7 +64,7 @@ export default {
 
             let idCarrito = window.location.href.split("/factura/")[1];
 
-            axios.get(`https://c3g10-backend.herokuapp.com/user/purchase/${userId}/${idCarrito}/`, {headers: {'Authorization': `Bearer ${token}`}})
+            axios.get(`https://locomproback.onrender.com/user/purchase/${userId}/${idCarrito}/`, {headers: {'Authorization': `Bearer ${token}`}})
                 .then((result) => {
                     console.log("Info", result);
                     this.carrito = result.data.productos;
@@ -88,7 +88,7 @@ export default {
 
         verifyToken: function () {
             let token = localStorage.getItem("refreshToken");
-            return axios.post("https://c3g10-backend.herokuapp.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
+            return axios.post("https://locomproback.onrender.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
 				.then((result) => {
                     console.log("Refrescado", result);
 					localStorage.setItem("accessToken", result.data.accessToken);

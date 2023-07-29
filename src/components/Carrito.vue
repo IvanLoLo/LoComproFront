@@ -10,7 +10,7 @@
                     <h2 v-on:click="goToProduct(item.idProducto)">{{ item.nombre }}</h2>
                     <h3>${{ item.precio }}</h3>
                     <div class="imageCarrito">
-                        <img v-bind:src="'https://c3g10-backend.herokuapp.com/product/image/'+item.productImage">
+                        <img v-bind:src="'https://locomproback.onrender.com/product/image/'+item.productImage">
                     </div>
                     <div class="controls">
                         <div class="cantidad">
@@ -61,7 +61,7 @@ export default {
             console.log(token);
             let userId = jwt_decode(token).idUser.toString();
 
-            axios.post(`https://c3g10-backend.herokuapp.com/user/checkout/${userId}/${this.total}`, {}, {headers: {'Authorization': `Bearer ${token}`}})
+            axios.post(`https://locomproback.onrender.com/user/checkout/${userId}/${this.total}`, {}, {headers: {'Authorization': `Bearer ${token}`}})
             .then(result => {
                 alert("Muchas gracias por su compra. Vuelva pronto!");
                 window.location.href = window.location.href;
@@ -93,7 +93,7 @@ export default {
             let token = localStorage.getItem("accessToken");
             let userId = jwt_decode(token).idUser.toString();
 
-            axios.get(`https://c3g10-backend.herokuapp.com/user/cart/${userId}/`, {headers: {'Authorization': `Bearer ${token}`}})
+            axios.get(`https://locomproback.onrender.com/user/cart/${userId}/`, {headers: {'Authorization': `Bearer ${token}`}})
                 .then((result) => {
                     console.log("Info", result);
                     this.carrito = result.data.productos;
@@ -117,7 +117,7 @@ export default {
 
         verifyToken: function () {
             let token = localStorage.getItem("refreshToken");
-            return axios.post("https://c3g10-backend.herokuapp.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
+            return axios.post("https://locomproback.onrender.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
 				.then((result) => {
 					localStorage.setItem("accessToken", result.data.accessToken);
 				})
@@ -140,7 +140,7 @@ export default {
             let token = localStorage.getItem("accessToken");
             let userId = jwt_decode(token).idUser.toString();
 
-            axios.delete(`https://c3g10-backend.herokuapp.com/user/cart/${userId}`, {headers: {'Authorization': `Bearer ${token}`}, data: {producto: productoId}})
+            axios.delete(`https://locomproback.onrender.com/user/cart/${userId}`, {headers: {'Authorization': `Bearer ${token}`}, data: {producto: productoId}})
             .then(result => {
                 alert("Producto eliminado satisfactoriamente");
             }).catch(err => {

@@ -4,7 +4,7 @@
 	
         <h1>{{producto.nombre}}</h1>
         <div class="image">
-            <img v-bind:src="'https://c3g10-backend.herokuapp.com/product/image/'+producto.productImage"
+            <img v-bind:src="'https://locomproback.onrender.com/product/image/'+producto.productImage"
             alt="Imagen Producto" title="Product Image">
         </div>
 
@@ -66,7 +66,7 @@ export default {
             
             this.id = window.location.href.split("/product/")[1];
 
-            axios.get(`https://c3g10-backend.herokuapp.com/product/${this.id}`).then(result => {
+            axios.get(`https://locomproback.onrender.com/product/${this.id}`).then(result => {
                 console.log(result.data.data);
                 this.cargado = true;
                 this.producto = result.data.data;
@@ -88,7 +88,7 @@ export default {
             let token = localStorage.getItem("accessToken");
             let userId = jwt_decode(token).idUser.toString();
 
-            axios.post(`https://c3g10-backend.herokuapp.com/user/cart/${userId}`, {producto: this.id, cantidad: 1}, {headers: {'Authorization': `Bearer ${token}`}})
+            axios.post(`https://locomproback.onrender.com/user/cart/${userId}`, {producto: this.id, cantidad: 1}, {headers: {'Authorization': `Bearer ${token}`}})
             .then(result => {
                 alert("Producto agregado al carrito");
             }).catch(err => {
@@ -102,7 +102,7 @@ export default {
             let confirmado = confirm(`¿Está seguro que desea eliminar el producto "${this.producto.nombre}" del inventario?`);
             if(!confirmado) return;
 
-            axios.delete(`https://c3g10-backend.herokuapp.com/product/${this.id}`)
+            axios.delete(`https://locomproback.onrender.com/product/${this.id}`)
             .then(result => {
                 alert("Producto eliminado satisfactoriamente");
             }).catch(err => {
@@ -123,7 +123,7 @@ export default {
 
         verifyToken: function () {
             let token = localStorage.getItem("refreshToken");
-            return axios.post("https://c3g10-backend.herokuapp.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
+            return axios.post("https://locomproback.onrender.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
 				.then((result) => {
                     console.log("Refrescado", result);
 					localStorage.setItem("accessToken", result.data.accessToken);

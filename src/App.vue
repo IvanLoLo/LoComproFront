@@ -2,7 +2,7 @@
   <div id="app" class="app">
 
     <div class="header">
-      <img id="icon" src="https://c3g10-backend.herokuapp.com/product/image/LoComproLogo.png" alt="Logo" v-on:click="loadProducts">
+      <img id="icon" src="https://locomproback.onrender.com/product/image/LoComproLogo.png" alt="Logo" v-on:click="loadProducts">
       <nav>
         <button v-if="is_auth" v-on:click="loadAccount"> Carrito </button>
         <button v-if="is_auth" v-on:click="loadPurchase"> Compras </button>

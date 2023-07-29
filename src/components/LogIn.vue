@@ -39,7 +39,7 @@ export default {
         processLogInUser: function(){
             axios.post(
                 //"http://localhost:3700/user/login/",
-                "https://c3g10-backend.herokuapp.com/user/login/", 
+                "https://locomproback.onrender.com/user/login/", 
                 this.user,
                 {headers: {}}
                 )

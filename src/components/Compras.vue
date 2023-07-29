@@ -47,7 +47,7 @@ export default {
             let token = localStorage.getItem("accessToken");
             let userId = jwt_decode(token).idUser.toString();
 
-            axios.get(`https://c3g10-backend.herokuapp.com/user/purchases/${userId}/`, {headers: {'Authorization': `Bearer ${token}`}})
+            axios.get(`https://locomproback.onrender.com/user/purchases/${userId}/`, {headers: {'Authorization': `Bearer ${token}`}})
                 .then((result) => {
                     if(result.data.data.length == 0){
                         alert("No haz realizado compras en nuestra tienda. Te invitamos a que agregues algunos productos"+
@@ -77,7 +77,7 @@ export default {
 
         verifyToken: function () {
             let token = localStorage.getItem("refreshToken");
-            return axios.post("https://c3g10-backend.herokuapp.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
+            return axios.post("https://locomproback.onrender.com/user/refresh/", {}, {headers: {'Authorization': `Bearer ${token}`}})
 				.then((result) => {
 					localStorage.setItem("accessToken", result.data.accessToken);
 				})

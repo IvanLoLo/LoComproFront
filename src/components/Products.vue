@@ -9,7 +9,7 @@
             <div class="info" v-on:click="loadProduct(item.idProducto)">
                 <h2>{{ item.nombre }}</h2>
                 <div class="imageList">
-                    <img v-bind:src="'https://c3g10-backend.herokuapp.com/product/image/'+item.productImage">
+                    <img v-bind:src="'https://locomproback.onrender.com/product/image/'+item.productImage">
                 </div>
                 <h3>${{ item.precio }}</h3>
             </div>
@@ -45,7 +45,7 @@ export default {
         },
         
         listing: function(){
-            axios.get("https://c3g10-backend.herokuapp.com").then(result => {
+            axios.get("https://locomproback.onrender.com").then(result => {
                 this.cargado = true;
                 this.lista = result.data.data;
             }).catch(err => {
@@ -55,7 +55,7 @@ export default {
 
         getImageUrl: function(item){
             console.log("Buscando imagen");
-            return "https://c3g10-backend.herokuapp.com/product/image/"+item;
+            return "https://locomproback.onrender.com/product/image/"+item;
         },
 
         loadProduct: function(product){

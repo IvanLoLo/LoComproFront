@@ -1,7 +1,7 @@
 <template>
 
-    <div class="greetingsHome">
-        <h1>¡Bienvenido  <span> {{email}} </span>!</h1>
+    <div class="greetings">
+        <h1>¡Bienvenido  <span> {{username}} </span>!</h1>
     </div>
 
 </template>
@@ -14,7 +14,7 @@ export default {
 
     data: function(){
         return {
-            email: localStorage.getItem('email') || "none"
+            username: localStorage.getItem('username') || "none"
         }
     }
 }
@@ -39,7 +39,7 @@ export default {
         color: #283747;
     }
 
-    .greetingsHome span{
+    .greetings span{
         color: crimson;
         font-weight: bold;
     }

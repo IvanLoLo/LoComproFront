@@ -68,7 +68,7 @@ export default {
 
         cargarInfo: function(id){
             console.log("Cargando los datos del producto", id);
-            axios.get(`https://c3g10-backend.herokuapp.com/product/${id}`).then(result => {
+            axios.get(`https://locomproback.onrender.com/product/${id}`).then(result => {
                 let data = result.data.data;
                 this.product = {
                     nombre: data.nombre,
@@ -107,7 +107,7 @@ export default {
             let formulario = this.createFormData();
 
             axios.post(
-                "https://c3g10-backend.herokuapp.com/product",
+                "https://locomproback.onrender.com/product",
                 formulario,
                 {headers: {'Content-Type': 'multipart/form-data'}}
             )   
@@ -125,7 +125,7 @@ export default {
             let formulario = this.createFormData();
             console.log(formulario);
             axios.put(
-                `https://c3g10-backend.herokuapp.com/product/${this.id}`,
+                `https://locomproback.onrender.com/product/${this.id}`,
                 formulario,
                 {headers: {'Content-Type': 'multipart/form-data'}}
             )   
@@ -174,7 +174,7 @@ export default {
         
 
         //Traer marcas
-        axios.get(`https://c3g10-backend.herokuapp.com/marcas`).then(result => {
+        axios.get(`https://locomproback.onrender.com/marcas`).then(result => {
             let data = result.data.data;
             this.marcas = result.data.data;
         }).catch(err => {

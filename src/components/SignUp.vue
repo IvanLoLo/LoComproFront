@@ -74,7 +74,7 @@ export default {
     methods: {
         processSignUp: function(){
             axios.post(
-                "https://c3g10-backend.herokuapp.com/user/signup/",
+                "https://locomproback.onrender.com/user/signup/",
                 this.user,
                 {headers: {}}
             )
